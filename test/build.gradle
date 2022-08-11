@@ -1,0 +1,35 @@
+plugins {
+    id 'groovy'
+    id 'maven-publish'
+}
+
+
+dependencies {
+    implementation gradleApi()
+    implementation localGroovy()
+    implementation 'org.aspectj:aspectjtools:1.8.9'
+    implementation 'org.aspectj:aspectjrt:1.8.9'
+    implementation 'com.android.tools.build:gradle:3.5.2'
+}
+
+group 'com.aop.plugin'
+version '1.0.0'
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java
+            artifactId ='plugin'
+//            groupId = 'org.gradle.sample'
+//            version = '1.0.0'
+//            description = 'this is a library'
+        }
+    }
+    repositories {
+        maven {
+            // change to point to your repo, e.g. http://my.org/repp
+            url = uri('../repo')
+//            url = uri('\\\\YINJIABING\\Share\\CustomerRes\\tmp')
+        }
+    }
+}
